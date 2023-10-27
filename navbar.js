@@ -1,6 +1,6 @@
 function NavBar(){
   return(
-    <nav className="navbar navbar-expand-lg navbar-light" style={navbarStyle}>
+    <nav className="navbar navbar-expand-lg navbar-light bg-primary">
       <a className="navbar-brand" href="#">BadBank</a>
       <button 
         className="navbar-toggler" 
@@ -85,4 +85,3 @@ function NavBar(){
     </nav>
   );
 }
-
