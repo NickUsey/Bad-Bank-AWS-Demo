@@ -1,6 +1,3 @@
-import React, { useState, useContext } from 'react';
-import { UserContext } from './UserContext'; // Make sure to import the UserContext from the correct location
-
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -74,5 +71,3 @@ function LoginPage() {
     />
   );
 }
-
-export default LoginPage;
