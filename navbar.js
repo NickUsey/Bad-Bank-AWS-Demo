@@ -1,7 +1,6 @@
 function NavBar(){
   return(
-    <>
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light" style={navbarStyle}>
       <a className="navbar-brand" href="#">BadBank</a>
       <button 
         className="navbar-toggler" 
@@ -18,48 +17,65 @@ function NavBar(){
         <ul className="navbar-nav">
           <li className="nav-item">
             <a 
-              className="nav-link" 
+              className="nav-link, text white" 
               href="#/CreateAccount/"
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Create a new account"
               >
                 Create Account
               </a>
           </li>
           <li className="nav-item">
             <a 
-              className="nav-link" 
+              className="nav-link text-white" 
               href="#/login/"
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Log into account"
               >
                 Login
               </a>
           </li>
           <li className="nav-item">
             <a 
-              className="nav-link" 
+              className="nav-link text-white" 
               href="#/deposit/"
+              data-toggle="tootip"
+              data-placement="bottom"
+              title="Deposit funds into account"
             >
               Deposit
             </a>
           </li>
           <li className="nav-item">
             <a 
-              className="nav-link" 
+              className="nav-link text-white" 
               href="#/withdraw/"
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Withdraw funds from account"
             >
               Withdraw
             </a>
           </li>
           <li className="nav-item">
             <a 
-              className="nav-link" 
+              className="nav-link text-white"
               href="#/balance/"
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Check the balance of the account"
             >
               Balance
             </a>
           </li>
           <li className="nav-item">
             <a 
-              className="nav-link" 
+              className="nav-link text-white" 
               href="#/alldata/"
+              data-toggle="tooltip"
+              data-placement="Check tthe data of the account on file"
             >
               AllData
             </a>
@@ -67,6 +83,6 @@ function NavBar(){
         </ul>
       </div>
     </nav>
-    </>
   );
 }
+
