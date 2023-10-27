@@ -17,7 +17,7 @@ function NavBar(){
         <ul className="navbar-nav">
           <li className="nav-item">
             <a 
-              className="nav-link text white" 
+              className="nav-link text-white" 
               href="#/CreateAccount/"
               data-toggle="tooltip"
               data-placement="bottom"
