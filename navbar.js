@@ -75,7 +75,7 @@ function NavBar(){
               className="nav-link text-white" 
               href="#/alldata/"
               data-toggle="tooltip"
-              data-placement="Check tthe data of the account on file"
+              data-placement="List of all accounts created"
             >
               AllData
             </a>
