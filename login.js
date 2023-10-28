@@ -1,13 +1,13 @@
 function Login() {
-    const [show, setShow]         = React.useState(true);
-    const [status, setStatus]     = React.useState('');
-    const [email, setEmail]       = React.useState('');
-    const [password, setPassword] = React.useState('');
-    const ctx = React.useContext(UserContext); 
+  const [show, setShow]         = React.useState(true);
+  const [status, setStatus]     = React.useState('');
+  const [email, setEmail]       = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const ctx = React.useContext(UserContext); 
 
   function validate(field, label) {
     if (!field) {
-      setStatus('Error: ' + label);
+      setStatus('Please fill in ' + label);
       setTimeout(() => setStatus(''), 3000);
       return false;
     }
@@ -15,6 +15,7 @@ function Login() {
   }
 
   function handleCreate() {
+    console.log(email, password);
     if (!validate(email, 'email')) 
     return;
 
@@ -34,13 +35,12 @@ function Login() {
 
   return (
     <Card
-      bgcolor="primary"
+      bgcolor="success"
       header="Login"
       status={status}
-      body={
+      body={show ? (
         <>
-          Email address
-          <br/>
+          Email<br/>
           <input
             type="input"
             className="form-control"
@@ -59,15 +59,26 @@ function Login() {
             value={password}
             onChange={(e) => setPassword(e.currentTarget.value)}
           />
-          <br />
+        <br />
           <button
             type="submit"
             className="btn btn-light"
-            onClick={handleLogin}
+            onClick={handleCreate}
           >
             Login
           </button>
         </>
+      ):( 
+        <>
+        <button
+          type="submit"
+          className="btn btn-light"
+          onClick={clearForm}
+        >
+          Login
+        </button>
+        </>
+      )
       }
     />
   );
