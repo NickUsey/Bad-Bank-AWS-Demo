@@ -13,24 +13,17 @@ function Login() {
     return true;
   }
 
-  function handleLogin() {
+  function handleCreate() {
     if (!validate(email, 'email')) 
     return;
 
     if (!validate(password, 'password')) 
     return;
+
+    ctx.users.push = {{email, password}};
+    setShow(false);
   }
 
-    // You can add your login logic here. For example, check if the email and password are correct.
-
-    // If the login is successful, you can update the user context.
-    // Replace this with your actual logic.
-    ctx.currentUser = {
-      email,
-      // You can set other user properties here if needed
-    };
-
-    // Clear the form
   function clearForm() {
     setEmail('');
     setPassword('');
