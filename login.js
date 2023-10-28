@@ -14,8 +14,12 @@ function Login() {
   }
 
   function handleLogin() {
-    if (!validate(email, 'email')) return;
-    if (!validate(password, 'password')) return;
+    if (!validate(email, 'email')) 
+    return;
+
+    if (!validate(password, 'password')) 
+    return;
+  }
 
     // You can add your login logic here. For example, check if the email and password are correct.
 
@@ -27,9 +31,11 @@ function Login() {
     };
 
     // Clear the form
+  function clearForm() {
     setEmail('');
     setPassword('');
     setStatus('Logged in successfully');
+    setShow(true);
   }
 
   return (
@@ -39,7 +45,8 @@ function Login() {
       status={status}
       body={
         <>
-          Email address<br />
+          Email address
+          <br/>
           <input
             type="input"
             className="form-control"
