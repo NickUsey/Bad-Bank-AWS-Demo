@@ -1,7 +1,8 @@
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [status, setStatus] = useState('');
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [status, setStatus] = React.useState('');
+  const [show, setShow] = React.useState('');
   const ctx = useContext(UserContext);
 
   function validate(field, label) {
