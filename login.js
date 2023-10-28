@@ -20,7 +20,7 @@ function Login() {
     if (!validate(password, 'password')) 
     return;
 
-    ctx.currentUser = {email, password};
+    ctx.users.push = ({email, password});
     setShow(false);
   }
 
