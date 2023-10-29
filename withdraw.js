@@ -1,6 +1,6 @@
 function Withdraw() {
   const [withdrawAmount, setWithdrawAmount] = React.useState('');
-  const [balance, setBalance] = React.useState('');
+  const [balance, setBalance] = React.useState(100);
   const [message, setMessage] = React.useState('');
   const [alert, setAlert] = React.useState('');
 
