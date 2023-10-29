@@ -1,8 +1,8 @@
 function Deposit() {
-  const [depositAmount, setDepositAmount] = useState('');
-  const [balance, setBalance] = useState(100); 
-  const [message, setMessage] = useState('');
-  const [alert, setAlert] = useState('');
+  const [depositAmount, setDepositAmount] = React.useState('');
+  const [balance, setBalance] = React.useState(100); 
+  const [message, setMessage] = React.useState('');
+  const [alert, setAlert] = React.useState('');
 
   const handleDeposit = () => {
     const amount = parseFloat(depositAmount);
