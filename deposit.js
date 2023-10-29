@@ -20,7 +20,7 @@ function Deposit() {
   };
 
   return (
-    <div className="container">
+    <div className="col-md-5 mb-3"">
       <div className="card">
         <div className="card-body">
           <h5 className="card-title">Deposit Funds</h5>
