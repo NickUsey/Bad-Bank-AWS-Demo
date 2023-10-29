@@ -22,7 +22,7 @@ function Withdraw() {
   };
 
   return (
-    <div className="col-md-5 mb-3"">
+    <div className="col-md-5 mb-3">
       <div className="card">
         <div className="card-body">
           <h5 className="card-title">Withdraw Funds</h5>
