@@ -1,61 +1,47 @@
 function Deposit() {
   const [depositAmount, setDepositAmount] = useState('');
-  const [balance, setBalance] = useState(1000); // Replace with the user's actual balance
+  const [balance, setBalance] = useState(100); 
   const [message, setMessage] = useState('');
-  const [disableDeposit, setDisableDeposit] = useState(true);
+  const [alert, setAlert] = useState('');
 
   const handleDeposit = () => {
     const amount = parseFloat(depositAmount);
 
     if (isNaN(amount)) {
-      setMessage('Please enter a valid deposit amount.');
-      return;
-    }
-
-    if (amount <= 0) {
-      setMessage('Please enter a positive deposit amount.');
-      return;
-    }
-
-    // Update the balance
-    setBalance(balance + amount);
-
-    setMessage(`Deposit of $${amount} received. New balance: $${balance + amount}`);
-
-    // Clear the input field and disable the deposit button
-    setDepositAmount('');
-    setDisableDeposit(true);
-  };
-
-  const handleAmountChange = (event) => {
-    const inputAmount = event.target.value;
-    setDepositAmount(inputAmount);
-
-    if (isNaN(parseFloat(inputAmount)) || parseFloat(inputAmount) <= 0) {
-      setDisableDeposit(true);
+      setAlert('Please enter a valid number.');
+    } else if (amount < 0) {
+      setAlert('Please enter a positive amount.');
     } else {
-      setDisableDeposit(false);
+      setBalance(balance + amount);
+      setMessage(`Successfully deposited $${amount}`);
+      setDepositAmount('');
+      setAlert('');
     }
   };
 
   return (
-    <div>
-      <h1>Deposit</h1>
+    <div className="container">
       <div className="card">
         <div className="card-body">
           <h5 className="card-title">Deposit Funds</h5>
-          <p className="card-text">Current Balance: ${balance}</p>
+          <p className="card-text">Balance: ${balance.toFixed(2)}</p>
+          {message && <p className="text-success">{message}</p>}
+          {alert && <p className="text-danger">{alert}</p>}
           <div className="form-group">
             <label htmlFor="depositAmount">Deposit Amount:</label>
             <input
               type="number"
+              className="form-control"
               id="depositAmount"
               value={depositAmount}
-              onChange={handleAmountChange}
+              onChange={(e) => setDepositAmount(e.target.value)}
             />
           </div>
-          {message && <p className="alert alert-success">{message}</p>}
-          <button onClick={handleDeposit} disabled={disableDeposit}>
+          <button
+            className="btn btn-primary"
+            onClick={handleDeposit}
+            disabled={!depositAmount}
+          >
             Deposit
           </button>
         </div>
