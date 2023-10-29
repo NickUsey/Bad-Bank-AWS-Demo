@@ -1,7 +1,7 @@
 function AllData() {
   const [userSubmissions, setUserSubmissions] = React.useState([]);
   
-  useEffect(() => {
+  React.useEffect(() => {
 
     const fetchData = async () => {
       try {
