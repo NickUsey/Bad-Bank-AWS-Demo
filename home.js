@@ -1,5 +1,7 @@
 function Home(){
   const ctx = React.useContext(UserContext);
+  const { users } = ctx;
+  const user = users[0];
   
   return (
     <Card
