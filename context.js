@@ -9,7 +9,7 @@ function Card(props){
       const txt = props.txtcolor ? ' text-' + props.txtcolor: ' text-white';
       const greenBorder = props.greenBorder ? " border border-primary " : "";
 
-      return 'card mb-3 ' + bg + txt + blueBorder;
+      return 'card mb-3 ' + bg + txt;
     }
   
     return (
