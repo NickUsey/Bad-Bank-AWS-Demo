@@ -7,7 +7,7 @@ function Balance() {
   
     return (
       <Card
-        bgColorClass="bg-info"
+        bgColorClass="primary"
         textColorClass="text-white"
         header="Balance"
         body={
