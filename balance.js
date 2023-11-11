@@ -1,5 +1,5 @@
 function Balance() {
-    const ctx = useContext(UserContext);
+    const ctx = React.useContext(UserContext);
   
     const { users, currentUserEmail } = ctx;
   
