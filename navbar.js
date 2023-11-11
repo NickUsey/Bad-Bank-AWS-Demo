@@ -61,6 +61,17 @@ function NavBar(){
           </li>
           <li className="nav-item">
             <a 
+              className="nav-link text-white"
+              href="#/balance/"
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Check the balance of the account"
+            >
+              Balance
+            </a>
+          </li>
+          <li className="nav-item">
+            <a 
               className="nav-link text-white" 
               href="#/alldata/"
               data-toggle="tooltip"
