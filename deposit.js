@@ -1,49 +1,66 @@
+import React, { useState, useContext } from 'react';
+import { UserContext } from './UserContext'; 
+
 function Deposit() {
-  const ctx = React.useContext(UserContext);
-  
-  const [depositAmount, setDepositAmount] = React.useState('');
-  const [balance, setBalance] = React.useState(100); 
-  const [message, setMessage] = React.useState('');
-  const [alert, setAlert] = React.useState('');
+  const ctx = useContext(UserContext);
+
+  const [depositAmount, setDepositAmount] = useState('');
+  const [balance, setBalance] = useState(''); // Replace with the user's actual balance
+  const [message, setMessage] = useState('');
+  const [disableDeposit, setDisableDeposit] = useState(true);
 
   const handleDeposit = () => {
     const amount = parseFloat(depositAmount);
 
     if (isNaN(amount)) {
-      setAlert('Please enter a valid number.');
-    } else if (amount < 0) {
-      setAlert('Please enter a positive amount.');
+      setMessage('Please enter a valid deposit amount.');
+      return;
+    }
+
+    if (amount <= 0) {
+      setMessage('Please enter a positive deposit amount.');
+      return;
+    }
+
+    // Update the balance
+    setBalance(balance + amount);
+
+    setMessage(`Deposit of $${amount} received. New balance: $${balance + amount}`);
+
+    // Clear the input field and disable the deposit button
+    setDepositAmount('');
+    setDisableDeposit(true);
+  };
+
+  const handleAmountChange = (event) => {
+    const inputAmount = event.target.value;
+    setDepositAmount(inputAmount);
+
+    if (isNaN(parseFloat(inputAmount)) || parseFloat(inputAmount) <= 0) {
+      setDisableDeposit(true);
     } else {
-      setBalance(balance + amount);
-      setMessage(`Successfully deposited $${amount}`);
-      setDepositAmount('');
-      setAlert('');
+      setDisableDeposit(false);
     }
   };
 
   return (
-    <div className="col-md-5 mb-3">
+    <div>
+      <h1>Deposit</h1>
       <div className="card">
         <div className="card-body">
           <h5 className="card-title">Deposit Funds</h5>
-          <p className="card-text">Balance: ${balance.toFixed(2)}</p>
-          {message && <p className="text-success">{message}</p>}
-          {alert && <p className="text-danger">{alert}</p>}
+          <p className="card-text">Current Balance: ${balance}</p>
           <div className="form-group">
             <label htmlFor="depositAmount">Deposit Amount:</label>
             <input
               type="number"
-              className="form-control"
               id="depositAmount"
               value={depositAmount}
-              onChange={(e) => setDepositAmount(e.target.value)}
+              onChange={handleAmountChange}
             />
           </div>
-          <button
-            className="btn btn-primary"
-            onClick={handleDeposit}
-            disabled={!depositAmount}
-          >
+          {message && <p className="alert alert-success">{message}</p>}
+          <button onClick={handleDeposit} disabled={disableDeposit}>
             Deposit
           </button>
         </div>
@@ -51,3 +68,5 @@ function Deposit() {
     </div>
   );
 }
+
+export default Deposit;
