@@ -2,9 +2,9 @@ import React, { useState, useContext } from 'react';
 import { UserContext } from './context'; 
 
 function Deposit() {
-  const ctx = useContext(UserContext);
 
   const [depositAmount, setDepositAmount] = useState('');
+  const ctx = useContext(UserContext);
   const [balance, setBalance] = useState(''); // Replace with the user's actual balance
   const [message, setMessage] = useState('');
   const [disableDeposit, setDisableDeposit] = useState(true);
