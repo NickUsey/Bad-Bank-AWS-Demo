@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { UserContext } from './Context'; 
+import { UserContext } from './context.js'; 
 
 function Deposit() {
   const ctx = useContext(UserContext);
