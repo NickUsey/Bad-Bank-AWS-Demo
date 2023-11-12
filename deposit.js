@@ -3,11 +3,11 @@ import { UserContext } from './context';
 
 function Deposit() {
 
-  const [depositAmount, setDepositAmount] = React.useState('');
-  const ctx = React.useContext(UserContext);
-  const [balance, setBalance] = React.useState(''); // Replace with the user's actual balance
-  const [message, setMessage] = React.useState('');
-  const [disableDeposit, setDisableDeposit] = React.useState(true);
+  const [depositAmount, setDepositAmount] = useState('');
+  const ctx = useContext(UserContext);
+  const [balance, setBalance] = useState(''); // Replace with the user's actual balance
+  const [message, setMessage] = useState('');
+  const [disableDeposit, setDisableDeposit] = useState(true);
 
   const handleDeposit = () => {
     const amount = parseFloat(depositAmount);
@@ -66,7 +66,6 @@ function Deposit() {
         </div>
       </div>
     </div>
-  );
+  );          
 }
-
 export default Deposit;
