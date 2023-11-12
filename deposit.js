@@ -21,7 +21,7 @@ function Deposit() {
   const [depositAmount, setDepositAmount] = React.useState('');
   const [balance, setBalance] = React.useState(''); // Replace with the user's actual balance
   const [message, setMessage] = React.useState('');
-  const [disableDeposit, setDisableDeposit] = React.useState(ctx.users[].balance);
+  const [disableDeposit, setDisableDeposit] = React.useState(ctx.users[0].balance);
 
   const handleDeposit = () => {
     const amount = parseFloat(depositAmount);
