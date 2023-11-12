@@ -1,5 +1,3 @@
-import React, { useState } from 'react';
-
 function Withdraw() {
   const ctx = React.useContext(UserContext);
   
@@ -55,5 +53,3 @@ function Withdraw() {
     </div>
   );
 }
-
-export default Withdraw;
