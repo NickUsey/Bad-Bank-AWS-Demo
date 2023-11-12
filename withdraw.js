@@ -2,7 +2,7 @@ function Withdraw() {
   const ctx = React.useContext(UserContext);
   
   const [withdrawAmount, setWithdrawAmount] = React.useState('');
-  const [balance, setBalance] = React.useState(ctx.users[].balance);
+  const [balance, setBalance] = React.useState(ctx.users[0].balance);
   const [message, setMessage] = React.useState('');
   const [alert, setAlert] = React.useState('');
 
