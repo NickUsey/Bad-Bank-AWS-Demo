@@ -1,10 +1,23 @@
-import React, { useState, useContext } from 'react';
-import { UserContext } from './context'; 
+function animateCount(startValue, endValue, duration, updateCallback) {
+  const increment = (endValue - startValue) / (duration / 16);
+
+  let currentValue = startValue;
+  const interval = setInterval(() => {
+    currentValue += increment;
+
+    if (currentValue >= endValue) {
+      currentValue = endValue;
+      clearInterval(interval);
+    }
+
+    updateCallback(currentValue);
+  }, 16);
+}
 
 function Deposit() {
+  const ctx = React.useContext(UserContext);
 
   const [depositAmount, setDepositAmount] = React.useState('');
-  const ctx = React.useContext(UserContext);
   const [balance, setBalance] = React.useState(''); // Replace with the user's actual balance
   const [message, setMessage] = React.useState('');
   const [disableDeposit, setDisableDeposit] = React.useState(true);
@@ -66,6 +79,5 @@ function Deposit() {
         </div>
       </div>
     </div>
-  );          
+  );
 }
-export default Deposit;
