@@ -10,6 +10,7 @@ function animateCount(startValue, endValue, duration, updateCallback) {
       clearInterval(interval);
     }
 
+    // Update the displayed value
     updateCallback(currentValue);
   }, 16);
 }
@@ -20,7 +21,7 @@ function Deposit() {
   const [depositAmount, setDepositAmount] = React.useState('');
   const [balance, setBalance] = React.useState(''); // Replace with the user's actual balance
   const [message, setMessage] = React.useState('');
-  const [disableDeposit, setDisableDeposit] = React.useState(true);
+  const [disableDeposit, setDisableDeposit] = React.useState(ctx.users[0].balance);
 
   const handleDeposit = () => {
     const amount = parseFloat(depositAmount);
@@ -59,7 +60,7 @@ function Deposit() {
   return (
     <div>
       <h1>Deposit</h1>
-      <div className="card">
+      <div className="col-md-5 mb-3">
         <div className="card-body">
           <h5 className="card-title">Deposit Funds</h5>
           <p className="card-text">Current Balance: ${balance}</p>
@@ -81,3 +82,4 @@ function Deposit() {
     </div>
   );
 }
+
