@@ -5,12 +5,10 @@ function Home() {
 
   return (
     <Card
-      bgcolor="white"
       txtcolor="black"
-      header="BadBank Web App"
-      title="Welcome to the bank!"
-      text="Take all the money you like."
-      blueBorder={true}
+      header="BadBank Landing Module"
+      title="Welcome to the bank"
+      text="You can move around using the navigation bar."
       body={
         <div>
           <p>
