@@ -1,6 +1,23 @@
+function animateCountDecrease(startValue, endValue, duration, updateCallback) {
+  const decrement = (startValue - endValue) / (duration / 16);
+
+  let currentValue = startValue;
+  const interval = setInterval(() => {
+    currentValue -= decrement;
+
+    if (currentValue <= endValue) {
+      currentValue = endValue;
+      clearInterval(interval);
+    }
+
+    // Update the displayed value
+    updateCallback(currentValue);
+  }, 16);
+}
+
 function Withdraw() {
   const ctx = React.useContext(UserContext);
-  
+
   const [withdrawAmount, setWithdrawAmount] = React.useState('');
   const [balance, setBalance] = React.useState(ctx.users[0].balance);
   const [message, setMessage] = React.useState('');
@@ -16,10 +33,28 @@ function Withdraw() {
     } else if (amount > balance) {
       setAlert('Insufficient funds for withdrawal.');
     } else {
-      setBalance(balance - amount);
+      const newBalance = balance - amount;
+      setBalance(newBalance);
+
+      ctx.transactions.push({
+        type: 'Withdraw',
+        amount: amount.toLocaleString('en-US', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        }),
+        user: ctx.users[0].name,
+        newbalance: newBalance,
+      });
+
       setMessage(`Successfully withdrew $${amount}`);
       setWithdrawAmount('');
       setAlert('');
+
+      // Call animateCountDecrease to update the displayed balance with animation
+      animateCountDecrease(balance, newBalance, 1000, (updatedValue) => {
+        // Update the displayed balance with the animated value
+        setBalance(updatedValue);
+      });
     }
   };
 
