@@ -21,5 +21,3 @@ function Balance() {
     );
   }
   
-  export default Balance;
-  
