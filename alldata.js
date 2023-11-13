@@ -1,51 +1,76 @@
-function UserDataCard({ submission }) {
+function UserCard({ user }) {
   return (
     <div className="card bg-primary text-white">
+      <h5 className="card-header">{user.name}</h5>
       <div className="card-body">
-        <p className="card-text">
-          <strong>Name:</strong> {submission.name}
+        <p className="card-text" bgcolor="primary">
+          <strong>Email:</strong> {user.email}
         </p>
         <p className="card-text">
-          <strong>Email:</strong> {submission.email}
+          <strong>Password:</strong> {user.password}
         </p>
-        {/* Add more fields as needed */}
-        <hr />
+        <p className="card-text">
+          <strong>Account Balance:</strong>
+          {" $"}
+          {parseFloat(user.balance).toLocaleString("en-US")}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function TransactionCard({ transaction }) {
+  const cardBackgroundColor =
+    transaction.type === "Deposit" ? "success" : "danger";
+  return (
+    <div className={`card bg-${cardBackgroundColor} text-white`}>
+      <h5 className="card-header">{transaction.type}</h5>
+      <div className="card-body">
+        <p className="card-text" bgcolor="primary">
+          <strong>Name:</strong> {transaction.user}
+        </p>
+        <p className="card-text">
+          <strong>Transaction Amount:</strong>
+          {" $"}
+          {parseFloat(transaction.amount).toLocaleString("en-US")}
+        </p>
+        <p className="card-text">
+          <strong>New Balance:</strong>
+          {" $"}
+          {parseFloat(transaction.newbalance).toLocaleString("en-US")}
+        </p>
       </div>
     </div>
   );
 }
 
 function AllData() {
-  const [userSubmissions, setUserSubmissions] = React.useState([]);
-
-  React.useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('https://api.example.com/user-submissions');
-        const data = await response.json();
-        setUserSubmissions(data);
-      } catch (error) {
-        console.error('Error fetching user submissions:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const ctx = React.useContext(UserContext);
+  const { users, transactions } = ctx;
 
   return (
-    <div className="col-md-5 mb-3">
-      <div className="card">
-        <div className="card-body">
-          <h5 className="card-title">All Data</h5>
+    <>
+      <h5>User Accounts</h5>
+      <div className="row">
+        {users.map((user, index) => (
+          <div className="col-md-4 mb-3" key={index}>
+            <UserCard user={user} />
+          </div>
+        ))}
+      </div>
+
+      {transactions.length > 0 && (
+        <>
+          <h5>User Transactions</h5>
           <div className="row">
-            {userSubmissions.map((submission, index) => (
+            {transactions.map((transaction, index) => (
               <div className="col-md-4 mb-3" key={index}>
-                <UserDataCard submission={submission} />
+                <TransactionCard transaction={transaction} />
               </div>
             ))}
           </div>
-        </div>
-      </div>
-    </div>
+        </>
+      )}
+    </>
   );
 }
