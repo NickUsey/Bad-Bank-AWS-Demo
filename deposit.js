@@ -1,3 +1,5 @@
+import React, { useState, useContext } from 'react';
+
 function animateCount(startValue, endValue, duration, updateCallback) {
   const increment = (endValue - startValue) / (duration / 16);
 
@@ -9,19 +11,18 @@ function animateCount(startValue, endValue, duration, updateCallback) {
       currentValue = endValue;
       clearInterval(interval);
     }
-
-    // Update the displayed value
+    
     updateCallback(currentValue);
   }, 16);
 }
 
 function Deposit() {
-  const ctx = React.useContext(UserContext);
+  const ctx = useContext(UserContext);
 
-  const [depositAmount, setDepositAmount] = React.useState('');
-  const [balance, setBalance] = React.useState(ctx.users[0].balance); // Replace with the user's actual balance
-  const [message, setMessage] = React.useState('');
-  const [disableDeposit, setDisableDeposit] = React.useState('');
+  const [depositAmount, setDepositAmount] = useState('');
+  const [balance, setBalance] = useState(ctx.users[0].balance); 
+  const [message, setMessage] = useState('');
+  const [disableDeposit, setDisableDeposit] = useState('');
 
   const handleDeposit = () => {
     const amount = parseFloat(depositAmount);
@@ -44,6 +45,12 @@ function Deposit() {
     // Clear the input field and disable the deposit button
     setDepositAmount('');
     setDisableDeposit(true);
+
+    // Call animateCount to update the displayed balance with animation
+    animateCount(balance, balance + amount, 1000, (updatedValue) => {
+      // Update the displayed balance with the animated value
+      setBalance(updatedValue);
+    });
   };
 
   const handleAmountChange = (event) => {
@@ -80,6 +87,9 @@ function Deposit() {
         </div>
       </div>
     </div>
+  );
+}
+
   );
 }
 
