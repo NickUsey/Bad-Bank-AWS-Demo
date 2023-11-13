@@ -1,5 +1,3 @@
-import React, { useState, useContext } from 'react';
-
 function animateCount(startValue, endValue, duration, updateCallback) {
   const increment = (endValue - startValue) / (duration / 16);
 
@@ -89,7 +87,3 @@ function Deposit() {
     </div>
   );
 }
-
-  );
-}
-
