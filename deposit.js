@@ -15,7 +15,7 @@ function animateCount(startValue, endValue, duration, updateCallback) {
 }
 
 function Deposit() {
-  const ctx = useContext(UserContext);
+  const ctx = React.useContext(UserContext);
 
   const [depositAmount, setDepositAmount] = useState('');
   const [balance, setBalance] = useState(ctx.users[0].balance); 
