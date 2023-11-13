@@ -5,11 +5,27 @@ function Home() {
 
   return (
     <Card
+      bgcolor="white"
       txtcolor="black"
-      header="BadBank Landing Module"
-      title="Welcome to the bank"
-      text="You can move around using the navigation bar."
-      body={<img src="bank.png" className="img-fluid" alt="Responsive image" />}
+      header="BadBank Web App"
+      title="Welcome to the bank!"
+      text="Take all the money you like."
+      blueBorder={true}
+      body={
+        <div>
+          <p>
+            Your Current Balance:
+            <strong>
+              {" $"}
+              {parseFloat(user.balance).toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })}
+            </strong>
+          </p>
+          <img src="bank.png" className="img-fluid" alt="Responsive image" />
+        </div>
+      }
     />
   );
 }
