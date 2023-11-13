@@ -16,7 +16,7 @@ function Spa() {
         }}
       >
         <div className="container" style={{padding: "20px"}}>
-          <Route path="/" exact component={Home} />
+          <Route path="/home" exact component={Home} />
           <Route path="/CreateAccount/" component={CreateAccount} />
           <Route path="/login/" component={Login} />
           <Route path="/deposit/" component={Deposit} />
@@ -29,7 +29,4 @@ function Spa() {
   );
 }
 
-ReactDOM.render(
-  <Spa/>,
-  document.getElementById('root')
-);
+ReactDOM.render(<Spa/>, document.getElementById('root'));
